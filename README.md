@@ -42,13 +42,17 @@ No drag-and-drop tools. Just Python and PostgreSQL.
 
 ---
 
-## Dashboard
-
 ## Dashboard Preview
 
-![Overview](assets/dashboard_overview.jpg)
-![Insights](assets/dashboard_insights.jpg)
+![Dashboard](assets/dashboard_overview.png)
 
+## Key Insights
+
+### Top Products
+![Top Products](assets/top_products.png)
+
+### Monthly Trend
+![Monthly Trend](assets/monthly_trend.png)
 ---
 
 ## What the data shows
