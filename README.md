@@ -25,6 +25,7 @@ The dataset itself is fully generated using custom logic to simulate real-world 
 
 ---
 
+```markdown
 ## Pipeline Flow
 
 ```mermaid
@@ -34,16 +35,16 @@ graph LR
     C --> D[Transform & Load]
     D --> E[(Warehouse: Star Schema)]
     E --> F[Dash Dashboard]
+```
 
+ETL Stages:
 
-**ETL Stages:**
+Stage Script Description
+Generate generate_data.py Simulates realistic sales data (customers, products)
+Ingest ingest_data.py Loads raw CSV into staging table
+Transform & Load transform_load.py Builds all dimensions and fact table
+Serve dashboard.py Launches interactive Dash dashboard
 
-| Stage | Script | Description |
-|---|---|---|
-| Generate | `generate_data.py` | Simulates realistic sales data (customers, products, regions, transactions) |
-| Ingest | `ingest_data.py` | Loads raw CSV into staging table |
-| Transform & Load | `transform_load.py` | Builds all dimensions and fact table |
-| Serve | `dashboard.py` | Launches interactive Dash dashboard |
 
 
 ---
