@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "=========================================="
-echo "📊 SALES DASHBOARD - $(date '+%Y-%m-%d %H:%M')"
+echo " SALES DASHBOARD - $(date '+%Y-%m-%d %H:%M')"
 echo "=========================================="
 
 echo ""
-echo "💰 OVERALL METRICS"
+echo " OVERALL METRICS"
 sudo -u postgres psql -d sales_db -t -c "
 SELECT 
     '   Total Orders: ' || COUNT(*) || 
@@ -14,7 +14,7 @@ SELECT
 FROM warehouse.fact_sales;"
 
 echo ""
-echo "🏆 TOP 3 PRODUCTS"
+echo " TOP 3 PRODUCTS"
 sudo -u postgres psql -d sales_db -t -c "
 SELECT '   ' || ROW_NUMBER() OVER (ORDER BY SUM(f.total_amount) DESC) || '. ' || 
        p.product_name || ': $' || TO_CHAR(SUM(f.total_amount), '999,999')
@@ -25,7 +25,7 @@ ORDER BY SUM(f.total_amount) DESC
 LIMIT 3;"
 
 echo ""
-echo "📍 REGIONAL BREAKDOWN"
+echo " REGIONAL BREAKDOWN"
 sudo -u postgres psql -d sales_db -t -c "
 SELECT '   ' || r.region_name || ': $' || TO_CHAR(SUM(f.total_amount), '999,999')
 FROM warehouse.fact_sales f
