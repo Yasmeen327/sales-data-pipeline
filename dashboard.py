@@ -13,7 +13,7 @@ def show_dashboard():
     cursor = conn.cursor()
     
     print("\n" + "="*60)
-    print(f"📊 SALES DASHBOARD - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f" SALES DASHBOARD - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("="*60)
     
     # Overall metrics
@@ -27,7 +27,7 @@ def show_dashboard():
     """)
     total_orders, total_revenue, avg_order, unique_customers = cursor.fetchone()
     
-    print(f"\n💰 OVERALL METRICS")
+    print(f"\n OVERALL METRICS")
     print(f"   Total Orders: {total_orders:,}")
     print(f"   Total Revenue: ${total_revenue:,.2f}")
     print(f"   Average Order Value: ${avg_order:.2f}")
@@ -42,7 +42,7 @@ def show_dashboard():
         ORDER BY revenue DESC
         LIMIT 5
     """)
-    print(f"\n🏆 TOP 5 PRODUCTS BY REVENUE")
+    print(f"\n TOP 5 PRODUCTS BY REVENUE")
     for i, (product, revenue, orders) in enumerate(cursor.fetchall(), 1):
         print(f"   {i}. {product}: ${revenue:,.2f} ({orders} orders)")
     
@@ -54,7 +54,7 @@ def show_dashboard():
         GROUP BY r.region_name
         ORDER BY revenue DESC
     """)
-    print(f"\n📍 SALES BY REGION")
+    print(f"\n SALES BY REGION")
     for region, revenue, orders in cursor.fetchall():
         print(f"   {region}: ${revenue:,.2f} ({orders} orders)")
     
@@ -66,7 +66,7 @@ def show_dashboard():
         GROUP BY p.category
         ORDER BY revenue DESC
     """)
-    print(f"\n📦 SALES BY CATEGORY")
+    print(f"\n SALES BY CATEGORY")
     for category, revenue, orders in cursor.fetchall():
         print(f"   {category}: ${revenue:,.2f} ({orders} orders)")
     
@@ -80,7 +80,7 @@ def show_dashboard():
         GROUP BY TO_CHAR(order_date, 'Day'), EXTRACT(DOW FROM order_date)
         ORDER BY EXTRACT(DOW FROM order_date)
     """)
-    print(f"\n📅 SALES BY DAY OF WEEK")
+    print(f"\n SALES BY DAY OF WEEK")
     for day, orders, revenue in cursor.fetchall():
         print(f"   {day.strip()}: {orders} orders (${revenue:,.2f})")
     
